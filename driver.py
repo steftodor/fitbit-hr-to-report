@@ -81,9 +81,56 @@ def convertFile(fileName, curFileNo, totalJobSize):
     # Add Graph
     canvas.drawInlineImage("fig1.jpg",150,400,350,250)
     canvas.drawString(1,10,"Report Generated on: " + str(datetime.now().strftime("%B %d, %Y %H:%M:%S")))
+    
+    hour = 0
+
+    hour_split_data = []
+    while hour < 24:
+        if hour < 10:
+            hour_S = "0" + str(hour)
+        else:
+            hour_S = str(hour)
+        split_df = df[df['Time'].str.startswith(str(hour_S))]
+        split_mean = str(split_df[["Heart Rate"]].mean(axis = 0)).split("\n")[0]
+        split_mean = split_mean.split(" ")
+        if "NaN" in split_mean:
+            hour_split_data.append(hour_S + " : " + "n/a")
+        else:
+            hour_split_data.append(hour_S + " : " + str(split_mean[5]))
+        hour += 1
+    canvas.drawString(1,330,"Hour by hour Average")
+    canvas.drawString(1,320,hour_split_data[0])
+    canvas.drawString(200,320,hour_split_data[1])
+    canvas.drawString(400,320,hour_split_data[2])
+
+    canvas.drawString(1,310,hour_split_data[3])
+    canvas.drawString(200,310,hour_split_data[4])
+    canvas.drawString(400,310,hour_split_data[5])
+
+    canvas.drawString(1,300,hour_split_data[6])
+    canvas.drawString(200,300,hour_split_data[7])
+    canvas.drawString(400,300,hour_split_data[8])
+
+    canvas.drawString(1,290,hour_split_data[9])
+    canvas.drawString(200,290,hour_split_data[10])
+    canvas.drawString(400,290,hour_split_data[11])
+
+    canvas.drawString(1,280,hour_split_data[12])
+    canvas.drawString(200,280,hour_split_data[13])
+    canvas.drawString(400,280,hour_split_data[14])
+
+    canvas.drawString(1,270,hour_split_data[15])
+    canvas.drawString(200,270,hour_split_data[16])
+    canvas.drawString(400,270,hour_split_data[17])
+
+    canvas.drawString(1,260,hour_split_data[18])
+    canvas.drawString(200,260,hour_split_data[19])
+    canvas.drawString(400,260,hour_split_data[20])
+
+    canvas.drawString(1,250,hour_split_data[21])
+    canvas.drawString(200,250,hour_split_data[22])
+    canvas.drawString(400,250,hour_split_data[23])
     canvas.save()
-
-
 
 os.chdir("raw_csv")
 curFileNo = 1
