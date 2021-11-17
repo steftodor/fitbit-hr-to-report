@@ -1,6 +1,8 @@
 #  fitbit_hr_to_report
 ## A simple tool to create a basic reports from Fitbit heart rate monitoring.
 
+This tool does not provide medical advice It is intended for informational purposes only. It is not a substitute for professional medical advice, diagnosis or treatment.
+
 ### Guide
 
 1. Install requirements `pip3 install -r requirements.txt`
